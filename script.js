@@ -307,4 +307,10 @@
   if (songBtn) songBtn.addEventListener('click', toggleMusic);
   music.addEventListener('play', syncMusicUI);
   music.addEventListener('pause', syncMusicUI);
+
+  // Pausa a música ambiente quando o vídeo do pedido começa a tocar
+  const proposalVideo = $('#proposalVideo');
+  if (proposalVideo) {
+    proposalVideo.addEventListener('play', () => { if (!music.paused) music.pause(); });
+  }
 })();

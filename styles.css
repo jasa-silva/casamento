@@ -368,6 +368,20 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
 .song__story strong { color: var(--ivory); font-weight: 600; }
 .song__story + .song__story { margin-top: -.6rem; }
 
+/* ===================== PROPOSAL (vídeo) ===================== */
+.proposal { background: var(--cream); text-align: center; }
+.proposal__intro { max-width: 620px; margin: -1.4rem auto 2.6rem; color: var(--ink-soft); font-size: 1.05rem; }
+.proposal__frame {
+  position: relative; max-width: 860px; margin: 0 auto;
+  padding: 10px; border-radius: 18px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+  box-shadow: var(--shadow-md);
+}
+.proposal__frame video {
+  display: block; width: 100%; max-height: 80vh;
+  border-radius: 12px; background: #000;
+}
+
 /* ===================== EVENT ===================== */
 .event { background: var(--ivory); }
 .event__cards {
