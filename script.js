@@ -10,7 +10,7 @@
     eventTitle: 'Casamento de Jaqueline & Lucas',
     eventLocation: 'Quinta de Marzovelos, R. Qta de Baixo n.º 2 B, 3510-014 Viseu',
     iban: 'PT50 0000 0000 0000 0000 0000 0',
-    galleryCount: 8,
+    galleryCount: 10,
   };
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -78,14 +78,12 @@
   /* ---------- Galeria (Unsplash) ---------- */
   const galleryGrid = $('#galleryGrid');
   const photos = [
-    '1519225421980-715cb0215aed', '1511285560929-80b456fea0bc',
-    '1465495976277-4387d4b0b4c6', '1606216794074-735e91aa2c92',
-    '1522673607200-164d1b6ce486', '1525258946800-8b1f93f12b6d',
-    '1537633552985-df8429e8048b', '1519741497674-611481863552',
+    'galeria-06.jpg', 'galeria-01.jpg', 'galeria-02.jpg', 'galeria-03.jpg',
+    'galeria-04.jpg', 'galeria-07.jpg', 'galeria-05.jpg', 'galeria-08.jpg',
+    'galeria-09.jpg', 'galeria-10.jpg',
   ];
   const galleryUrls = [];
-  photos.slice(0, CONFIG.galleryCount).forEach((id, i) => {
-    const url = `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
+  photos.slice(0, CONFIG.galleryCount).forEach((url, i) => {
     galleryUrls.push(url);
     const item = document.createElement('div');
     item.className = 'gallery__item reveal-up';

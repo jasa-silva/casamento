@@ -194,7 +194,7 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
   display: flex; align-items: center; justify-content: center; text-align: center;
   background:
     linear-gradient(180deg, rgba(20,30,50,.32), rgba(31,59,92,.55)),
-    url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+    url('img-hero.jpg') center/cover fixed;
   color: var(--ivory); overflow: hidden;
 }
 .hero__overlay {
