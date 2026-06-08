@@ -306,9 +306,21 @@
   music.addEventListener('play', syncMusicUI);
   music.addEventListener('pause', syncMusicUI);
 
-  // Pausa a música ambiente quando o vídeo do pedido começa a tocar
-  const proposalVideo = $('#proposalVideo');
-  if (proposalVideo) {
-    proposalVideo.addEventListener('play', () => { if (!music.paused) music.pause(); });
+  // Vídeo do pedido (YouTube) — pausa a música ambiente quando começa a tocar
+  if ($('#proposalPlayer')) {
+    window.onYouTubeIframeAPIReady = function () {
+      new YT.Player('proposalPlayer', {
+        videoId: 'lfA6qLqBcMU',
+        playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
+        events: {
+          onStateChange: function (e) {
+            if (e.data === YT.PlayerState.PLAYING && !music.paused) music.pause();
+          },
+        },
+      });
+    };
+    const yt = document.createElement('script');
+    yt.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(yt);
   }
 })();
