@@ -11,6 +11,9 @@
     eventLocation: 'Quinta de Marzovelos, R. Qta de Baixo n.º 2 B, 3510-014 Viseu',
     iban: 'PT50 0000 0000 0000 0000 0000 0',
     mbway: '+351 900 000 000',
+    // URL do Google Apps Script (Web App) que grava na planilha e envia e-mail.
+    // Cole aqui o link terminado em /exec depois de fazer o deploy.
+    rsvpEndpoint: '',
   };
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -115,7 +118,8 @@
       guestsField.classList.toggle('is-visible', r.value === 'sim' && r.checked);
     })
   );
-  form.addEventListener('submit', (e) => {
+  const submitBtn = $('button[type="submit"]', form);
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = $('#name').value.trim();
     const attend = (form.querySelector('input[name="attend"]:checked') || {}).value;
@@ -131,12 +135,29 @@
       diet: $('#diet').value.trim(),
       at: new Date().toISOString(),
     };
-    // Guarda localmente (substitua por um endpoint real se desejar)
+    // Cópia de segurança local
     try {
       const all = JSON.parse(localStorage.getItem('rsvps') || '[]');
       all.push(data);
       localStorage.setItem('rsvps', JSON.stringify(all));
     } catch (_) {}
+
+    // Envia para o Google Apps Script (planilha + e-mail), se configurado
+    if (CONFIG.rsvpEndpoint) {
+      submitBtn.disabled = true;
+      showFeedback('A enviar a sua confirmação…', true);
+      try {
+        await fetch(CONFIG.rsvpEndpoint, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(data),
+        });
+      } catch (_) {
+        /* a cópia local fica guardada de qualquer forma */
+      }
+      submitBtn.disabled = false;
+    }
 
     if (attend === 'sim') {
       showFeedback(`Obrigado, ${name.split(' ')[0]}! Mal podemos esperar por si. 🥂`, true);
