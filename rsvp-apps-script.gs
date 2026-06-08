@@ -1,37 +1,37 @@
 /**
  * RSVP — Casamento Jaqueline & Lucas
- * Recebe as confirmações do site, grava-as numa planilha do Google
- * e envia um e-mail de notificação aos noivos.
+ * Backend leve (sem planilha): guarda as confirmações no próprio script,
+ * envia um e-mail aos noivos a cada resposta e fornece os dados à página
+ * de administração (admin.html) protegida por palavra-passe.
  *
  * COMO INSTALAR (passo a passo):
- *  1. Abra https://sheets.new  (cria uma planilha nova) e dê-lhe um nome,
- *     ex.: "RSVP — Jaqueline & Lucas".
- *  2. No menu, clique em  Extensões → Apps Script.
- *  3. Apague o código que aparecer e COLE todo este ficheiro. Guarde (💾).
- *  4. Clique em  Implementar (Deploy) → Nova implementação.
- *  5. No ícone de engrenagem, escolha  Aplicação Web (Web app).
+ *  1. Abra  https://script.new   (cria um projeto Apps Script novo).
+ *  2. Apague o código que aparecer e COLE todo este ficheiro.
+ *  3. Em baixo, troque a PALAVRA-PASSE (SENHA) por uma à sua escolha.
+ *  4. Guarde (💾).
+ *  5. Clique em  Implementar (Deploy) → Nova implementação.
+ *  6. No ícone de engrenagem, escolha  Aplicação Web (Web app):
  *       - Executar como:  Eu (a sua conta)
  *       - Quem tem acesso:  Qualquer pessoa (Anyone)
  *     Clique  Implementar  e autorize (Avançado → Aceder ao projeto → Permitir).
- *  6. Copie o  URL da aplicação web  (termina em  /exec ).
- *  7. Envie-me esse URL — eu coloco-o no site (CONFIG.rsvpEndpoint).
+ *  7. Copie o  URL da aplicação web  (termina em  /exec ).
+ *  8. Envie-me esse URL e a palavra-passe que escolheu — eu ligo o site
+ *     e a página de administração.
  */
 
+// ⚠️ TROQUE por uma palavra-passe à sua escolha (a mesma que usará no admin):
+var SENHA = 'jaqueline-lucas-2026';
+
+// E-mail que recebe a notificação de cada confirmação:
 var EMAIL_NOIVOS = 'jasasilva@outlook.pt';
 
+/* ---------- Recebe uma confirmação do site ---------- */
 function doPost(e) {
   try {
     var d = JSON.parse(e.postData.contents);
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-
-    // Cria o cabeçalho na primeira utilização
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['Data/Hora', 'Nome', 'E-mail', 'Presença',
-                       'Nº de Pessoas', 'Mensagem', 'Restrições']);
-    }
-
-    sheet.appendRow([new Date(), d.name, d.email, d.attend,
-                     d.guests, d.message, d.diet]);
+    var props = PropertiesService.getScriptProperties();
+    var key = 'rsvp_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
+    props.setProperty(key, JSON.stringify(d));
 
     var presenca = (d.attend === 'sim') ? 'VAI ESTAR PRESENTE ✅' : 'Não poderá ir 💔';
     MailApp.sendEmail({
@@ -49,4 +49,46 @@ function doPost(e) {
   } catch (err) {
     return ContentService.createTextOutput('erro: ' + err);
   }
+}
+
+/* ---------- Fornece/gere os dados para a página admin (via JSONP) ---------- */
+function doGet(e) {
+  var cb = e.parameter.callback;
+
+  if (e.parameter.token !== SENHA) {
+    return reply(cb, { ok: false, error: 'unauthorized' });
+  }
+
+  var props = PropertiesService.getScriptProperties();
+
+  // Apagar uma confirmação
+  if (e.parameter.action === 'delete' && e.parameter.key) {
+    props.deleteProperty(e.parameter.key);
+    return reply(cb, { ok: true, deleted: e.parameter.key });
+  }
+
+  // Listar todas as confirmações
+  var all = props.getProperties();
+  var rows = [];
+  for (var k in all) {
+    if (k.indexOf('rsvp_') === 0) {
+      try {
+        var r = JSON.parse(all[k]);
+        r._key = k;
+        rows.push(r);
+      } catch (_) {}
+    }
+  }
+  rows.sort(function (a, b) { return String(a.at).localeCompare(String(b.at)); });
+  return reply(cb, { ok: true, rows: rows });
+}
+
+function reply(cb, obj) {
+  var json = JSON.stringify(obj);
+  if (cb) {
+    return ContentService.createTextOutput(cb + '(' + json + ')')
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+  return ContentService.createTextOutput(json)
+    .setMimeType(ContentService.MimeType.JSON);
 }

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin · Confirmações · Jaqueline &amp; Lucas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%8D%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --navy:#1f3b5c; --navy-dark:#142a44; --navy-soft:#5e7da6;
+      --cream:#f7f4ee; --cream-deep:#ece6da; --ivory:#fffdf9;
+      --gold:#c2a878; --gold-deep:#a98c5b; --ink:#20283a; --ink-soft:#5a6172;
+      --sans:'Jost',system-ui,sans-serif; --serif:'Cormorant Garamond',serif; --script:'Great Vibes',cursive;
+      --shadow:0 12px 40px rgba(20,30,50,.12);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.6;min-height:100vh}
+    a{color:var(--navy)}
+    .wrap{max-width:1100px;margin:0 auto;padding:1.5rem}
+
+    /* Login */
+    .login{min-height:100vh;display:grid;place-items:center;padding:1.5rem;
+      background:linear-gradient(rgba(31,59,92,.92),rgba(20,42,68,.95))}
+    .login__card{background:var(--ivory);border-radius:18px;box-shadow:var(--shadow);
+      padding:2.6rem;max-width:420px;width:100%;text-align:center}
+    .login__mono{font-family:var(--script);font-size:2.8rem;color:var(--navy)}
+    .login__mono span{color:var(--gold)}
+    .login__card h1{font-family:var(--serif);font-size:1.5rem;color:var(--navy);margin:.2rem 0 1.4rem;font-weight:600}
+    .field{text-align:left;margin-bottom:1rem}
+    .field label{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--gold-deep);margin-bottom:.35rem}
+    .field input{width:100%;border:1px solid var(--cream-deep);border-radius:10px;padding:.8rem .9rem;font-family:var(--sans);font-size:.95rem;background:var(--cream)}
+    .field input:focus{outline:none;border-color:var(--gold)}
+    .btn{font-family:var(--sans);border:none;cursor:pointer;border-radius:50px;
+      padding:.85rem 1.6rem;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+      background:var(--navy);color:var(--ivory);transition:.25s}
+    .btn:hover{background:var(--navy-dark)}
+    .btn--block{display:block;width:100%}
+    .btn--ghost{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+    .btn--ghost:hover{background:var(--navy);color:var(--ivory)}
+    .btn--sm{padding:.5rem 1rem;font-size:.7rem}
+    .msg{margin-top:.8rem;font-size:.88rem;min-height:1.2rem}
+    .msg.err{color:#c0392b}
+    .hidden{display:none!important}
+
+    /* Dashboard */
+    .top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+      padding:1.2rem 1.5rem;background:var(--navy);color:var(--ivory)}
+    .top__brand{font-family:var(--script);font-size:1.8rem}
+    .top__brand span{color:var(--gold)}
+    .top__actions{display:flex;gap:.6rem;flex-wrap:wrap}
+    .top .btn{background:var(--gold);color:var(--ink)}
+    .top .btn:hover{background:#d4bd8e}
+    .top .btn--ghost{background:transparent;color:var(--ivory);border-color:rgba(255,253,249,.5)}
+    .top .btn--ghost:hover{background:rgba(255,253,249,.15);color:var(--ivory)}
+
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.5rem 0}
+    .stat{background:var(--ivory);border:1px solid var(--cream-deep);border-radius:14px;padding:1.4rem;box-shadow:0 6px 20px rgba(20,30,50,.06)}
+    .stat__num{font-family:var(--serif);font-size:2.6rem;font-weight:600;color:var(--navy);line-height:1}
+    .stat__label{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--gold-deep);margin-top:.4rem}
+    .stat--gold .stat__num{color:var(--gold-deep)}
+
+    .toolbar{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem}
+    .toolbar input{flex:1 1 220px;border:1px solid var(--cream-deep);border-radius:50px;padding:.7rem 1.1rem;font-family:var(--sans);background:var(--ivory)}
+    .toolbar input:focus{outline:none;border-color:var(--gold)}
+
+    .table-wrap{background:var(--ivory);border:1px solid var(--cream-deep);border-radius:14px;overflow:auto;box-shadow:0 6px 20px rgba(20,30,50,.06)}
+    table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:760px}
+    th,td{padding:.85rem 1rem;text-align:left;border-bottom:1px solid var(--cream-deep);vertical-align:top}
+    th{background:var(--cream);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-deep);position:sticky;top:0}
+    tr:last-child td{border-bottom:none}
+    .tag{display:inline-block;padding:.2rem .7rem;border-radius:50px;font-size:.74rem;font-weight:500}
+    .tag--yes{background:#e3efe1;color:#2e6b3e}
+    .tag--no{background:#f6e2df;color:#a23b2c}
+    .del{background:none;border:none;color:#c0392b;cursor:pointer;font-size:1.1rem;line-height:1}
+    .empty{padding:3rem;text-align:center;color:var(--ink-soft)}
+    .foot{text-align:center;color:var(--ink-soft);font-size:.8rem;margin:2rem 0 1rem}
+    @media(max-width:520px){ .top__brand{font-size:1.4rem} }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <section class="login" id="loginView">
+    <div class="login__card">
+      <div class="login__mono">J <span>&amp;</span> L</div>
+      <h1>Painel de Confirmações</h1>
+      <div class="field">
+        <label for="endpoint">URL do script (termina em /exec)</label>
+        <input type="url" id="endpoint" placeholder="https://script.google.com/.../exec" />
+      </div>
+      <div class="field">
+        <label for="pass">Palavra-passe</label>
+        <input type="password" id="pass" placeholder="••••••••" />
+      </div>
+      <button class="btn btn--block" id="loginBtn">Entrar</button>
+      <p class="msg" id="loginMsg"></p>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <div id="dashView" class="hidden">
+    <header class="top">
+      <div class="top__brand">J <span>&amp;</span> L · Confirmações</div>
+      <div class="top__actions">
+        <button class="btn btn--sm" id="refreshBtn">↻ Atualizar</button>
+        <button class="btn btn--sm" id="exportBtn">⬇ Exportar CSV</button>
+        <button class="btn btn--ghost btn--sm" id="logoutBtn">Sair</button>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="stats" id="stats"></div>
+
+      <div class="toolbar">
+        <input type="search" id="search" placeholder="🔎 Pesquisar por nome, e-mail ou mensagem…" />
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th><th>Nome</th><th>Presença</th><th>Pessoas</th>
+              <th>E-mail</th><th>Mensagem</th><th>Restrições</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        <div class="empty hidden" id="empty">Ainda não há confirmações.</div>
+      </div>
+
+      <p class="foot">Atualizado em <span id="updatedAt">—</span></p>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var $ = function(s){ return document.querySelector(s); };
+    var endpoint = localStorage.getItem('jl_admin_endpoint') || '';
+    var token = sessionStorage.getItem('jl_admin_token') || '';
+    var rows = [];
+
+    /* ---------- JSONP ---------- */
+    function jsonp(params){
+      return new Promise(function(resolve, reject){
+        var cb = '__jl' + Date.now() + Math.floor(Math.random()*1000);
+        var s = document.createElement('script');
+        var timer = setTimeout(function(){ cleanup(); reject(new Error('Sem resposta (verifique o URL).')); }, 15000);
+        function cleanup(){ delete window[cb]; if(s.parentNode){ s.parentNode.removeChild(s); } clearTimeout(timer); }
+        window[cb] = function(data){ cleanup(); resolve(data); };
+        s.onerror = function(){ cleanup(); reject(new Error('Falha de ligação ao script.')); };
+        var sep = endpoint.indexOf('?') >= 0 ? '&' : '?';
+        s.src = endpoint + sep + 'callback=' + cb + '&token=' + encodeURIComponent(token) + '&' + params + '&_=' + Date.now();
+        document.body.appendChild(s);
+      });
+    }
+
+    /* ---------- Login ---------- */
+    function showLogin(){ $('#loginView').classList.remove('hidden'); $('#dashView').classList.add('hidden'); }
+    function showDash(){ $('#loginView').classList.add('hidden'); $('#dashView').classList.remove('hidden'); }
+
+    $('#endpoint').value = endpoint;
+
+    $('#loginBtn').addEventListener('click', doLogin);
+    $('#pass').addEventListener('keydown', function(e){ if(e.key==='Enter') doLogin(); });
+
+    function doLogin(){
+      endpoint = $('#endpoint').value.trim();
+      token = $('#pass').value;
+      var msg = $('#loginMsg');
+      if(!endpoint){ msg.textContent='Cole o URL do script.'; msg.className='msg err'; return; }
+      if(!token){ msg.textContent='Indique a palavra-passe.'; msg.className='msg err'; return; }
+      msg.textContent='A entrar…'; msg.className='msg';
+      load(function(ok, err){
+        if(ok){
+          localStorage.setItem('jl_admin_endpoint', endpoint);
+          sessionStorage.setItem('jl_admin_token', token);
+          showDash();
+        } else {
+          msg.textContent = err || 'Palavra-passe incorreta.'; msg.className='msg err';
+        }
+      });
+    }
+
+    /* ---------- Carregar dados ---------- */
+    function load(done){
+      jsonp('action=list').then(function(res){
+        if(res && res.ok){ rows = res.rows || []; render(); if(done) done(true); }
+        else { if(done) done(false, 'Palavra-passe incorreta.'); }
+      }).catch(function(e){ if(done) done(false, e.message); });
+    }
+
+    /* ---------- Render ---------- */
+    function esc(v){ return String(v==null?'':v).replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    function fmtDate(iso){
+      var d = new Date(iso); if(isNaN(d)) return esc(iso);
+      return d.toLocaleString('pt-PT', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    }
+
+    function render(){
+      var q = ($('#search').value || '').toLowerCase();
+      var sim = rows.filter(function(r){ return r.attend==='sim'; });
+      var nao = rows.filter(function(r){ return r.attend!=='sim'; });
+      var pessoas = sim.reduce(function(s,r){ return s + (parseInt(r.guests,10)||0); }, 0);
+
+      $('#stats').innerHTML =
+        stat(sim.length, 'Confirmados') +
+        stat(pessoas, 'Total de pessoas', true) +
+        stat(nao.length, 'Não poderão ir') +
+        stat(rows.length, 'Respostas');
+
+      var list = rows.filter(function(r){
+        if(!q) return true;
+        return (String(r.name)+String(r.email)+String(r.message)).toLowerCase().indexOf(q) >= 0;
+      });
+
+      var tb = $('#tbody'); tb.innerHTML='';
+      $('#empty').classList.toggle('hidden', list.length>0);
+      list.slice().reverse().forEach(function(r){
+        var tr = document.createElement('tr');
+        var tag = r.attend==='sim' ? '<span class="tag tag--yes">Sim</span>' : '<span class="tag tag--no">Não</span>';
+        tr.innerHTML =
+          '<td>'+fmtDate(r.at)+'</td>'+
+          '<td><strong>'+esc(r.name)+'</strong></td>'+
+          '<td>'+tag+'</td>'+
+          '<td>'+(r.attend==='sim'?esc(r.guests):'—')+'</td>'+
+          '<td>'+esc(r.email||'—')+'</td>'+
+          '<td>'+esc(r.message||'—')+'</td>'+
+          '<td>'+esc(r.diet||'—')+'</td>'+
+          '<td><button class="del" title="Apagar" data-key="'+esc(r._key)+'">✕</button></td>';
+        tb.appendChild(tr);
+      });
+      $('#updatedAt').textContent = new Date().toLocaleString('pt-PT');
+    }
+    function stat(n, label, gold){
+      return '<div class="stat'+(gold?' stat--gold':'')+'"><div class="stat__num">'+n+'</div><div class="stat__label">'+label+'</div></div>';
+    }
+
+    /* ---------- Ações ---------- */
+    $('#search').addEventListener('input', render);
+    $('#refreshBtn').addEventListener('click', function(){ load(); });
+    $('#logoutBtn').addEventListener('click', function(){
+      sessionStorage.removeItem('jl_admin_token'); token=''; $('#pass').value=''; showLogin();
+    });
+    $('#tbody').addEventListener('click', function(e){
+      var btn = e.target.closest('.del'); if(!btn) return;
+      if(!confirm('Apagar esta confirmação? Esta ação não pode ser anulada.')) return;
+      jsonp('action=delete&key=' + encodeURIComponent(btn.dataset.key)).then(function(){ load(); });
+    });
+    $('#exportBtn').addEventListener('click', function(){
+      var head = ['Data','Nome','Presenca','Pessoas','Email','Mensagem','Restricoes'];
+      var lines = [head.join(',')];
+      rows.forEach(function(r){
+        lines.push([fmtDate(r.at), r.name, r.attend, r.guests, r.email, r.message, r.diet]
+          .map(function(v){ return '"' + String(v==null?'':v).replace(/"/g,'""') + '"'; }).join(','));
+      });
+      var blob = new Blob(['﻿'+lines.join('\r\n')], {type:'text/csv;charset=utf-8'});
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'confirmacoes-jaqueline-lucas.csv';
+      a.click(); URL.revokeObjectURL(a.href);
+    });
+
+    /* ---------- Início: tenta sessão ativa ---------- */
+    if(endpoint && token){
+      load(function(ok){ ok ? showDash() : showLogin(); });
+    } else {
+      showLogin();
+    }
+  })();
+  </script>
+</body>
+</html>

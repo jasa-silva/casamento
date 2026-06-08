@@ -65,11 +65,16 @@ const CONFIG = {
   (a parte final do link, ex.: `https://youtu.be/`**`dwF2Nyhmpdg`**). Para mudar
   a capa, substitua `video-capa.jpg`.
 - **RSVP** (confirmações): as respostas são enviadas para um **Google Apps
-  Script** que as grava numa **planilha** e envia um **e-mail** de notificação.
-  Siga as instruções do ficheiro [`rsvp-apps-script.gs`](rsvp-apps-script.gs),
-  faça o deploy como *Web app* e cole o URL (terminado em `/exec`) no campo
-  `rsvpEndpoint` do `CONFIG`, no topo do `script.js`. Enquanto `rsvpEndpoint`
-  estiver vazio, as respostas ficam apenas no `localStorage` do navegador.
+  Script** que (1) envia um **e-mail** de notificação aos noivos e (2) guarda
+  os dados para a **página de administração** `admin.html` — sem planilha.
+  - Siga as instruções do ficheiro [`rsvp-apps-script.gs`](rsvp-apps-script.gs)
+    e faça o deploy como *Web app*. Escolha uma palavra-passe (`SENHA`).
+  - Cole o URL (terminado em `/exec`) no campo `rsvpEndpoint` do `CONFIG`, no
+    topo do `script.js` (para o formulário público enviar as respostas).
+  - Abra **`/admin.html`**, introduza o mesmo URL e a palavra-passe para ver,
+    pesquisar, exportar (CSV) e gerir as confirmações.
+  - Enquanto `rsvpEndpoint` estiver vazio, as respostas ficam apenas no
+    `localStorage` do navegador do convidado (não chegam aos noivos).
 
 ## ☁️ Deploy
 
