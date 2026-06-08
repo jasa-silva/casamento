@@ -537,7 +537,7 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
   transition: border-color .3s;
 }
 .field input:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
-.field label {
+.field > label {
   position: absolute; left: .2rem; top: .7rem; color: rgba(255,253,249,.65);
   pointer-events: none; transition: all .3s var(--ease); font-size: 1rem;
 }
