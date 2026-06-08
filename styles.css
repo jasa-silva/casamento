@@ -488,8 +488,6 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
 }
 .dresscode__title { font-family: var(--serif); font-size: 1.7rem; color: var(--sage-dark); font-weight: 600; margin-bottom: .5rem; }
 .dresscode__text { color: var(--ink-soft); font-size: .98rem; line-height: 1.6; }
-.dresscode__navy { color: var(--sage-dark); font-weight: 600; }
-.dresscode__gold { color: var(--gold-deep); font-weight: 600; }
 
 /* ===================== RSVP ===================== */
 .rsvp {
