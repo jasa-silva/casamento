@@ -210,7 +210,7 @@
   /* ---------- Confettis ---------- */
   function celebrate() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const colors = ['#c2a878', '#7c8a6b', '#aab69a', '#fffdf9', '#a98c5b'];
+    const colors = ['#c2a878', '#1f3b5c', '#5e7da6', '#fffdf9', '#a98c5b'];
     for (let i = 0; i < 90; i++) {
       const c = document.createElement('div');
       c.style.cssText = `position:fixed;z-index:700;top:-10px;left:${Math.random() * 100}vw;width:${6 + Math.random() * 8}px;height:${6 + Math.random() * 8}px;background:${colors[i % colors.length]};border-radius:${Math.random() > 0.5 ? '50%' : '2px'};pointer-events:none;opacity:.9;`;

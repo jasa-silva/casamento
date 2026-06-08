@@ -4,24 +4,25 @@
    =================================================================== */
 
 :root {
-  --sage: #7c8a6b;
-  --sage-dark: #5d6a4f;
-  --sage-light: #aab69a;
+  /* Azul-marinho + dourado champanhe */
+  --sage: #1f3b5c;       /* azul-marinho principal */
+  --sage-dark: #142a44;  /* azul-marinho profundo */
+  --sage-light: #5e7da6; /* azul suave */
   --cream: #f7f4ee;
-  --cream-deep: #efe9df;
+  --cream-deep: #ece6da;
   --ivory: #fffdf9;
   --gold: #c2a878;
   --gold-deep: #a98c5b;
-  --ink: #3a3a34;
-  --ink-soft: #6b6b60;
+  --ink: #20283a;
+  --ink-soft: #5a6172;
   --white: #ffffff;
 
   --serif: 'Cormorant Garamond', Georgia, serif;
   --script: 'Great Vibes', cursive;
   --sans: 'Jost', -apple-system, system-ui, sans-serif;
 
-  --shadow-sm: 0 6px 20px rgba(58, 58, 52, .08);
-  --shadow-md: 0 18px 50px rgba(58, 58, 52, .12);
+  --shadow-sm: 0 6px 20px rgba(20, 30, 50, .1);
+  --shadow-md: 0 18px 50px rgba(20, 30, 50, .15);
   --ease: cubic-bezier(.22, 1, .36, 1);
 }
 
@@ -192,13 +193,13 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
   position: relative; min-height: 100vh;
   display: flex; align-items: center; justify-content: center; text-align: center;
   background:
-    linear-gradient(180deg, rgba(58,58,52,.32), rgba(93,106,79,.55)),
+    linear-gradient(180deg, rgba(20,30,50,.32), rgba(31,59,92,.55)),
     url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
   color: var(--ivory); overflow: hidden;
 }
 .hero__overlay {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, transparent 35%, rgba(58,58,52,.45) 100%);
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(20,30,50,.45) 100%);
 }
 .hero__content { position: relative; z-index: 5; padding: 1.5rem; }
 .hero__pretitle {
@@ -320,7 +321,7 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
 .song {
   position: relative; text-align: center; color: var(--ivory); overflow: hidden;
   background:
-    linear-gradient(rgba(93,106,79,.9), rgba(58,58,52,.92)),
+    linear-gradient(rgba(31,59,92,.9), rgba(20,30,50,.92)),
     url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
 }
 .song .overline { color: var(--gold); }
@@ -403,7 +404,7 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
 }
 .gallery__item::after {
   content: '🔍'; position: absolute; inset: 0; display: grid; place-items: center;
-  background: rgba(93,106,79,.35); opacity: 0; transition: opacity .4s; font-size: 1.6rem;
+  background: rgba(31,59,92,.35); opacity: 0; transition: opacity .4s; font-size: 1.6rem;
 }
 .gallery__item:hover img { transform: scale(1.1); }
 .gallery__item:hover::after { opacity: 1; }
@@ -420,25 +421,6 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
 .schedule__dot { width: 14px; height: 14px; border-radius: 50%; background: var(--sage); border: 3px solid var(--ivory); box-shadow: 0 0 0 2px var(--sage-light); margin: .5rem auto 0; z-index: 2; }
 .schedule__item h3 { font-family: var(--serif); font-size: 1.35rem; color: var(--sage-dark); font-weight: 600; }
 .schedule__item p { color: var(--ink-soft); font-size: .95rem; }
-
-/* ===================== MENU / EMENTA ===================== */
-.menu {
-  max-width: 600px; margin: 3.5rem auto 0; text-align: center;
-  background: var(--cream); border: 1px solid var(--cream-deep);
-  border-radius: 18px; padding: 2.6rem 2rem; box-shadow: var(--shadow-sm);
-}
-.menu__head { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.8rem; }
-.menu__head h3 { font-family: var(--script); font-size: 2.4rem; color: var(--sage-dark); font-weight: 400; }
-.menu__flourish { color: var(--gold); font-size: .9rem; }
-.menu__course { padding: 1rem 0; border-top: 1px solid var(--cream-deep); }
-.menu__course:first-of-type { border-top: none; }
-.menu__label {
-  font-family: var(--sans); text-transform: uppercase; letter-spacing: .2em;
-  font-size: .72rem; color: var(--gold-deep); margin-bottom: .5rem;
-}
-.menu__label em { text-transform: none; letter-spacing: normal; font-size: .85em; color: var(--ink-soft); }
-.menu__dish { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); line-height: 1.4; }
-.menu__or { font-family: var(--serif); font-style: italic; color: var(--sage); margin: .3rem 0; font-size: 1rem; }
 
 /* ===================== GIFTS ===================== */
 .gifts { background: var(--cream); text-align: center; }
@@ -458,7 +440,7 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
 .rsvp {
   position: relative; text-align: center; color: var(--ivory);
   background:
-    linear-gradient(rgba(93,106,79,.86), rgba(58,58,52,.9)),
+    linear-gradient(rgba(31,59,92,.86), rgba(20,30,50,.9)),
     url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
 }
 .rsvp .overline { color: var(--gold); }
@@ -529,7 +511,7 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
 /* ===================== MODAL ===================== */
 .modal { position: fixed; inset: 0; z-index: 500; display: none; align-items: center; justify-content: center; padding: 1.5rem; }
 .modal.is-open { display: flex; }
-.modal__backdrop { position: absolute; inset: 0; background: rgba(58,58,52,.6); backdrop-filter: blur(4px); }
+.modal__backdrop { position: absolute; inset: 0; background: rgba(20,30,50,.6); backdrop-filter: blur(4px); }
 .modal__box {
   position: relative; background: var(--ivory); border-radius: 18px; padding: 2.6rem 2.2rem;
   max-width: 420px; width: 100%; text-align: center; box-shadow: var(--shadow-md);
