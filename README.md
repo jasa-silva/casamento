@@ -13,7 +13,6 @@ fácil de personalizar.
 - **Contagem decrescente** em tempo real para o grande dia
 - **A Nossa História** — linha do tempo animada do casal
 - **O Grande Dia** — cerimónia, celebração e botão para adicionar à agenda (`.ics`)
-- **Galeria** com *lightbox* (navegação por teclado e toque)
 - **Programa** do dia
 - **Presença & Presentes** com IBAN e MB WAY e botão "copiar"
 - **Dress code** em destaque

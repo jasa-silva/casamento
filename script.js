@@ -11,7 +11,6 @@
     eventLocation: 'Quinta de Marzovelos, R. Qta de Baixo n.º 2 B, 3510-014 Viseu',
     iban: 'PT50 0000 0000 0000 0000 0000 0',
     mbway: '+351 900 000 000',
-    galleryCount: 10,
   };
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -75,59 +74,6 @@
   }
   tick();
   setInterval(tick, 1000);
-
-  /* ---------- Galeria ---------- */
-  const galleryGrid = $('#galleryGrid');
-  const photos = [
-    'galeria-06.jpg', 'galeria-01.jpg', 'galeria-02.jpg', 'galeria-03.jpg',
-    'galeria-04.jpg', 'galeria-07.jpg', 'galeria-05.jpg', 'galeria-08.jpg',
-    'galeria-09.jpg', 'galeria-10.jpg',
-  ];
-  const galleryUrls = [];
-  photos.slice(0, CONFIG.galleryCount).forEach((url, i) => {
-    galleryUrls.push(url);
-    const item = document.createElement('div');
-    item.className = 'gallery__item reveal-up';
-    item.style.setProperty('--d', i * 0.06 + 's');
-    item.dataset.index = i;
-    item.innerHTML = `<img src="${url}" alt="Momento ${i + 1} de Jaqueline e Lucas" loading="lazy" />`;
-    galleryGrid.appendChild(item);
-  });
-
-  /* ---------- Lightbox ---------- */
-  const lightbox = $('#lightbox');
-  const lightboxImg = $('#lightboxImg');
-  let currentIdx = 0;
-  function openLightbox(idx) {
-    currentIdx = idx;
-    lightboxImg.src = galleryUrls[idx];
-    lightbox.classList.add('is-open');
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    lightbox.classList.remove('is-open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-  function navLightbox(dir) {
-    currentIdx = (currentIdx + dir + galleryUrls.length) % galleryUrls.length;
-    lightboxImg.src = galleryUrls[currentIdx];
-  }
-  galleryGrid.addEventListener('click', (e) => {
-    const item = e.target.closest('.gallery__item');
-    if (item) openLightbox(Number(item.dataset.index));
-  });
-  $('.lightbox__close').addEventListener('click', closeLightbox);
-  $('.lightbox__nav--prev').addEventListener('click', () => navLightbox(-1));
-  $('.lightbox__nav--next').addEventListener('click', () => navLightbox(1));
-  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('is-open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') navLightbox(-1);
-    if (e.key === 'ArrowRight') navLightbox(1);
-  });
 
   /* ---------- Reveal on scroll ---------- */
   const io = new IntersectionObserver(
