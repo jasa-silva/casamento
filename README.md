@@ -64,10 +64,12 @@ const CONFIG = {
   (`video-capa.jpg`). Para trocar o vídeo, altere o `VIDEO_ID` em `script.js`
   (a parte final do link, ex.: `https://youtu.be/`**`dwF2Nyhmpdg`**). Para mudar
   a capa, substitua `video-capa.jpg`.
-- **RSVP**: por agora as respostas são guardadas no `localStorage` do navegador.
-  Para receber as confirmações, ligue o formulário a um serviço como
-  [Formspree](https://formspree.io), [Getform](https://getform.io) ou uma
-  Google Apps Script.
+- **RSVP** (confirmações): as respostas são enviadas para um **Google Apps
+  Script** que as grava numa **planilha** e envia um **e-mail** de notificação.
+  Siga as instruções do ficheiro [`rsvp-apps-script.gs`](rsvp-apps-script.gs),
+  faça o deploy como *Web app* e cole o URL (terminado em `/exec`) no campo
+  `rsvpEndpoint` do `CONFIG`, no topo do `script.js`. Enquanto `rsvpEndpoint`
+  estiver vazio, as respostas ficam apenas no `localStorage` do navegador.
 
 ## ☁️ Deploy
 
