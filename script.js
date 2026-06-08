@@ -228,32 +228,6 @@
       '&location=' + encodeURIComponent(CONFIG.eventLocation);
     const gBtn = $('#gcalBtn');
     if (gBtn) gBtn.href = gcal;
-
-    // Apple Agenda / Outlook — descarrega o ficheiro .ics
-    const iBtn = $('#icalBtn');
-    if (iBtn) {
-      iBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const ics = [
-          'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//JL Wedding//PT',
-          'BEGIN:VEVENT',
-          'UID:' + Date.now() + '@jl-wedding',
-          'DTSTAMP:' + fmt(new Date()),
-          'DTSTART:' + fmt(start),
-          'DTEND:' + fmt(end),
-          'SUMMARY:' + CONFIG.eventTitle,
-          'LOCATION:' + CONFIG.eventLocation,
-          'DESCRIPTION:' + desc.replace(/,/g, '\\,'),
-          'END:VEVENT', 'END:VCALENDAR',
-        ].join('\r\n');
-        const blob = new Blob([ics], { type: 'text/calendar' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'casamento-jaqueline-lucas.ics';
-        link.click();
-        URL.revokeObjectURL(link.href);
-      });
-    }
   }
 
   /* ---------- Música — "Só Você" (Anderson Freire) ----------
