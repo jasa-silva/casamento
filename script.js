@@ -211,32 +211,50 @@
     });
   });
 
-  /* ---------- Adicionar à agenda (.ics) ---------- */
-  $('#calBtn').addEventListener('click', (e) => {
-    e.preventDefault();
+  /* ---------- Adicionar à agenda ---------- */
+  {
     // Hora de Portugal (WEST, UTC+1 em setembro): 11h00 → 18h00
     const start = new Date('2026-09-26T11:00:00+01:00');
     const end = new Date('2026-09-26T18:00:00+01:00');
     const fmt = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    const ics = [
-      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//JL Wedding//PT',
-      'BEGIN:VEVENT',
-      'UID:' + Date.now() + '@jl-wedding',
-      'DTSTAMP:' + fmt(new Date()),
-      'DTSTART:' + fmt(start),
-      'DTEND:' + fmt(end),
-      'SUMMARY:' + CONFIG.eventTitle,
-      'LOCATION:' + CONFIG.eventLocation,
-      'DESCRIPTION:Com todo o nosso amor\\, esperamos por si!',
-      'END:VEVENT', 'END:VCALENDAR',
-    ].join('\r\n');
-    const blob = new Blob([ics], { type: 'text/calendar' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'casamento-jaqueline-lucas.ics';
-    link.click();
-    URL.revokeObjectURL(link.href);
-  });
+    const desc = 'Com todo o nosso amor, esperamos por si!';
+
+    // Google Agenda — abre o evento pré-preenchido
+    const gcal =
+      'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+      '&text=' + encodeURIComponent(CONFIG.eventTitle) +
+      '&dates=' + fmt(start) + '/' + fmt(end) +
+      '&details=' + encodeURIComponent(desc) +
+      '&location=' + encodeURIComponent(CONFIG.eventLocation);
+    const gBtn = $('#gcalBtn');
+    if (gBtn) gBtn.href = gcal;
+
+    // Apple Agenda / Outlook — descarrega o ficheiro .ics
+    const iBtn = $('#icalBtn');
+    if (iBtn) {
+      iBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const ics = [
+          'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//JL Wedding//PT',
+          'BEGIN:VEVENT',
+          'UID:' + Date.now() + '@jl-wedding',
+          'DTSTAMP:' + fmt(new Date()),
+          'DTSTART:' + fmt(start),
+          'DTEND:' + fmt(end),
+          'SUMMARY:' + CONFIG.eventTitle,
+          'LOCATION:' + CONFIG.eventLocation,
+          'DESCRIPTION:' + desc.replace(/,/g, '\\,'),
+          'END:VEVENT', 'END:VCALENDAR',
+        ].join('\r\n');
+        const blob = new Blob([ics], { type: 'text/calendar' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'casamento-jaqueline-lucas.ics';
+        link.click();
+        URL.revokeObjectURL(link.href);
+      });
+    }
+  }
 
   /* ---------- Música — "Só Você" (Anderson Freire) ----------
      Substitua o <source> do #bgMusic (no index.html) pelo ficheiro
