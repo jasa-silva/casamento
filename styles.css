@@ -265,6 +265,25 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
   text-transform: uppercase; letter-spacing: .24em; color: var(--gold-deep);
 }
 
+/* ===================== VERSE ===================== */
+.verse { background: var(--cream); text-align: center; padding: clamp(3.5rem, 7vw, 6rem) 0; }
+.verse__cord { display: flex; justify-content: center; gap: 6px; margin-bottom: 1.8rem; }
+.verse__cord span {
+  display: block; width: 4px; height: 46px; border-radius: 4px;
+  background: linear-gradient(var(--gold), var(--sage-light));
+}
+.verse__cord span:nth-child(1) { transform: rotate(-12deg); }
+.verse__cord span:nth-child(3) { transform: rotate(12deg); }
+.verse__text {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1.3rem, 3.4vw, 1.9rem); color: var(--sage-dark);
+  max-width: 720px; margin: 0 auto 1rem; line-height: 1.5;
+}
+.verse__ref {
+  font-family: var(--sans); text-transform: uppercase; letter-spacing: .3em;
+  font-size: .78rem; color: var(--gold-deep);
+}
+
 /* ===================== STORY / TIMELINE ===================== */
 .story { background: var(--cream); }
 .timeline { position: relative; max-width: 760px; margin: 0 auto; padding: 1rem 0; }
@@ -401,6 +420,25 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
 .schedule__dot { width: 14px; height: 14px; border-radius: 50%; background: var(--sage); border: 3px solid var(--ivory); box-shadow: 0 0 0 2px var(--sage-light); margin: .5rem auto 0; z-index: 2; }
 .schedule__item h3 { font-family: var(--serif); font-size: 1.35rem; color: var(--sage-dark); font-weight: 600; }
 .schedule__item p { color: var(--ink-soft); font-size: .95rem; }
+
+/* ===================== MENU / EMENTA ===================== */
+.menu {
+  max-width: 600px; margin: 3.5rem auto 0; text-align: center;
+  background: var(--cream); border: 1px solid var(--cream-deep);
+  border-radius: 18px; padding: 2.6rem 2rem; box-shadow: var(--shadow-sm);
+}
+.menu__head { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.8rem; }
+.menu__head h3 { font-family: var(--script); font-size: 2.4rem; color: var(--sage-dark); font-weight: 400; }
+.menu__flourish { color: var(--gold); font-size: .9rem; }
+.menu__course { padding: 1rem 0; border-top: 1px solid var(--cream-deep); }
+.menu__course:first-of-type { border-top: none; }
+.menu__label {
+  font-family: var(--sans); text-transform: uppercase; letter-spacing: .2em;
+  font-size: .72rem; color: var(--gold-deep); margin-bottom: .5rem;
+}
+.menu__label em { text-transform: none; letter-spacing: normal; font-size: .85em; color: var(--ink-soft); }
+.menu__dish { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); line-height: 1.4; }
+.menu__or { font-family: var(--serif); font-style: italic; color: var(--sage); margin: .3rem 0; font-size: 1rem; }
 
 /* ===================== GIFTS ===================== */
 .gifts { background: var(--cream); text-align: center; }

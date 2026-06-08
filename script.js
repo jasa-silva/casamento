@@ -6,9 +6,9 @@
 
   // Configuração editável -------------------------------------------------
   const CONFIG = {
-    weddingDate: '2026-09-26T15:00:00',
+    weddingDate: '2026-09-26T11:00:00',
     eventTitle: 'Casamento de Jaqueline & Lucas',
-    eventLocation: 'Quinta da Serra, Sintra, Portugal',
+    eventLocation: 'Quinta de Marzovelos, R. Qta de Baixo n.º 2 B, 3510-014 Viseu',
     iban: 'PT50 0000 0000 0000 0000 0000 0',
     galleryCount: 8,
   };
@@ -255,7 +255,7 @@
   $('#calBtn').addEventListener('click', (e) => {
     e.preventDefault();
     const start = new Date(CONFIG.weddingDate);
-    const end = new Date(start.getTime() + 9 * 36e5); // ~9h de festa
+    const end = new Date(start.getTime() + 7 * 36e5); // 11h00 → 18h00
     const fmt = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
     const ics = [
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//JL Wedding//PT',
