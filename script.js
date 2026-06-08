@@ -260,6 +260,24 @@
   music.addEventListener('play', syncMusicUI);
   music.addEventListener('pause', syncMusicUI);
 
+  // Toca automaticamente ao abrir. Se o navegador bloquear o som
+  // automático, a música arranca na primeira interação (toque/scroll/clique).
+  music.volume = 0.45;
+  function autostart() {
+    if (!music.paused) return;
+    music.play().catch(() => {});
+  }
+  const evs = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+  function startOnce() {
+    autostart();
+    evs.forEach((ev) => window.removeEventListener(ev, startOnce));
+  }
+  // 1) tentativa imediata
+  music.play().catch(() => {
+    // 2) fallback: primeira interação
+    evs.forEach((ev) => window.addEventListener(ev, startOnce, { passive: true }));
+  });
+
   // Vídeo do pedido (YouTube) com capa personalizada.
   // Carrega só ao clicar e pausa a música ambiente quando começa a tocar.
   const facade = $('#proposalFacade');
