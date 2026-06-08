@@ -6,7 +6,7 @@
 
   // Configuração editável -------------------------------------------------
   const CONFIG = {
-    weddingDate: '2026-09-12T15:00:00',
+    weddingDate: '2026-09-26T15:00:00',
     eventTitle: 'Casamento de Jaqueline & Lucas',
     eventLocation: 'Quinta da Serra, Sintra, Portugal',
     iban: 'PT50 0000 0000 0000 0000 0000 0',
@@ -277,19 +277,33 @@
     URL.revokeObjectURL(link.href);
   });
 
-  /* ---------- Música ambiente ---------- */
+  /* ---------- Música — "Só Você" (Anderson Freire) ----------
+     Substitua o <source> do #bgMusic (no index.html) pelo ficheiro
+     da vossa música. Os dois botões (flutuante e da secção "A Nossa
+     Música") controlam o mesmo áudio e ficam sincronizados. */
   const music = $('#bgMusic');
   const musicBtn = $('#musicToggle');
-  let playing = false;
-  musicBtn.addEventListener('click', () => {
-    if (playing) {
-      music.pause();
-      musicBtn.classList.remove('is-playing');
-    } else {
-      music.volume = 0.4;
-      music.play().catch(() => {});
-      musicBtn.classList.add('is-playing');
+  const songBtn = $('#songPlay');
+  const songText = songBtn ? $('.song__play-text', songBtn) : null;
+
+  function syncMusicUI() {
+    const on = !music.paused;
+    musicBtn.classList.toggle('is-playing', on);
+    if (songBtn) {
+      songBtn.classList.toggle('is-playing', on);
+      if (songText) songText.textContent = on ? 'A tocar a nossa música' : 'Tocar a nossa música';
     }
-    playing = !playing;
-  });
+  }
+  function toggleMusic() {
+    if (music.paused) {
+      music.volume = 0.45;
+      music.play().catch(() => {});
+    } else {
+      music.pause();
+    }
+  }
+  musicBtn.addEventListener('click', toggleMusic);
+  if (songBtn) songBtn.addEventListener('click', toggleMusic);
+  music.addEventListener('play', syncMusicUI);
+  music.addEventListener('pause', syncMusicUI);
 })();

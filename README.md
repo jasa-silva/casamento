@@ -42,7 +42,7 @@ Tudo o que muda com frequência está reunido no topo do `script.js`:
 
 ```js
 const CONFIG = {
-  weddingDate: '2026-09-12T15:00:00', // data e hora do casamento
+  weddingDate: '2026-09-26T15:00:00', // data e hora do casamento
   eventTitle: 'Casamento de Jaqueline & Lucas',
   eventLocation: 'Quinta da Serra, Sintra, Portugal',
   iban: 'PT50 0000 0000 0000 0000 0000 0', // IBAN para presentes
@@ -53,7 +53,9 @@ const CONFIG = {
 - **Cores**: edite as variáveis `--sage`, `--gold`, etc. no topo de `styles.css`.
 - **Textos**: edite diretamente o `index.html` (história, programa, FAQ…).
 - **Fotos**: substitua os URLs do Unsplash em `index.html` (hero) e na lista
-  `photos` do `script.js` (galeria) pelas vossas fotografias reais.
+  `photos` do `script.js` (galeria) pelas vossas fotografias do *pré-wedding*.
+- **Música** ("Só Você" — Anderson Freire): coloque o ficheiro `.mp3` da música
+  e aponte o `<source>` do `<audio id="bgMusic">` no `index.html` para ele.
 - **RSVP**: por agora as respostas são guardadas no `localStorage` do navegador.
   Para receber as confirmações, ligue o formulário a um serviço como
   [Formspree](https://formspree.io), [Getform](https://getform.io) ou uma
@@ -69,4 +71,4 @@ Site 100% estático — pode publicar em qualquer serviço:
 
 ---
 
-Feito com ♥ para celebrar a Jaqueline & o Lucas · 12 · 09 · 2026
+Feito com ♥ para celebrar a Jaqueline & o Lucas · 26 · 09 · 2026
