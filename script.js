@@ -6,7 +6,7 @@
 
   // Configuração editável -------------------------------------------------
   const CONFIG = {
-    weddingDate: '2026-09-26T11:00:00',
+    weddingDate: '2026-09-26T00:00:00',
     eventTitle: 'Casamento de Jaqueline & Lucas',
     eventLocation: 'Quinta de Marzovelos, R. Qta de Baixo n.º 2 B, 3510-014 Viseu',
     iban: 'PT50 0000 0000 0000 0000 0000 0',
@@ -255,6 +255,7 @@
   $('#calBtn').addEventListener('click', (e) => {
     e.preventDefault();
     const start = new Date(CONFIG.weddingDate);
+    start.setHours(11, 0, 0, 0); // cerimónia/receção às 11h00
     const end = new Date(start.getTime() + 7 * 36e5); // 11h00 → 18h00
     const fmt = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
     const ics = [
