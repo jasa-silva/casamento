@@ -359,6 +359,15 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
   box-sizing: border-box;
 }
 
+.story__closing {
+  max-width: 640px; margin: 2.6rem auto 0; text-align: center;
+  font-family: var(--serif); font-style: italic; font-size: 1.25rem;
+  color: var(--sage-dark); line-height: 1.6;
+}
+.song__story em { color: var(--gold); font-style: italic; }
+.song__story strong { color: var(--ivory); font-weight: 600; }
+.song__story + .song__story { margin-top: -.6rem; }
+
 /* ===================== EVENT ===================== */
 .event { background: var(--ivory); }
 .event__cards {
