@@ -1,6 +1,6 @@
 /* ===================================================================
    Jaqueline & Lucas — Convite de Casamento
-   Paleta: verde-salva, creme, dourado champanhe
+   Paleta: azul-marinho, creme, dourado champanhe
    =================================================================== */
 
 :root {
@@ -28,7 +28,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
 body {
   font-family: var(--sans);
@@ -377,10 +377,6 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
   background: linear-gradient(135deg, var(--gold), var(--gold-deep));
   box-shadow: var(--shadow-md);
 }
-.proposal__frame video {
-  display: block; width: 100%; max-height: 80vh;
-  border-radius: 12px; background: #000;
-}
 .proposal__video {
   position: relative; width: 100%; padding-top: 56.25%; /* 16:9 */
   border-radius: 12px; overflow: hidden; background: #000;
@@ -478,17 +474,44 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
 
 /* ===================== GIFTS ===================== */
 .gifts { background: var(--cream); text-align: center; }
-.gifts__intro { max-width: 620px; margin: -1.4rem auto 3rem; color: var(--ink-soft); font-size: 1.05rem; }
-.gifts__cards { display: flex; gap: 1.6rem; justify-content: center; flex-wrap: wrap; }
-.gift-card {
+.gifts__intro { max-width: 640px; margin: -1.4rem auto 3rem; color: var(--ink-soft); font-size: 1.08rem; }
+.gifts__methods { display: flex; gap: 1.6rem; justify-content: center; flex-wrap: wrap; }
+.pay-card {
   background: var(--ivory); border-radius: 16px; padding: 2.2rem 1.8rem;
-  flex: 1 1 260px; max-width: 320px; border: 1px solid var(--cream-deep);
+  flex: 1 1 280px; max-width: 360px; border: 1px solid var(--cream-deep);
   box-shadow: var(--shadow-sm); transition: transform .4s var(--ease), box-shadow .4s;
 }
-.gift-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.gift-card__icon { font-size: 2.2rem; margin-bottom: .7rem; }
-.gift-card h3 { font-family: var(--serif); font-size: 1.6rem; color: var(--sage-dark); font-weight: 600; margin-bottom: .5rem; }
-.gift-card p { color: var(--ink-soft); font-size: .92rem; margin-bottom: 1.4rem; }
+.pay-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.pay-card__icon { font-size: 2.2rem; margin-bottom: .7rem; }
+.pay-card__label {
+  text-transform: uppercase; letter-spacing: .2em; font-size: .72rem;
+  color: var(--gold-deep); margin-bottom: .5rem;
+}
+.pay-card__value {
+  font-family: var(--serif); font-size: 1.35rem; color: var(--sage-dark);
+  font-weight: 600; letter-spacing: .02em; margin-bottom: 1.3rem; word-break: break-word;
+}
+.gifts__note { margin-top: 2rem; color: var(--ink-soft); font-size: .9rem; letter-spacing: .04em; }
+
+/* ===================== DRESS CODE ===================== */
+.dresscode {
+  display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap;
+  justify-content: center; text-align: left;
+  max-width: 720px; margin: 0 auto 2.8rem;
+  background: var(--cream); border: 1px solid var(--cream-deep);
+  border-left: 5px solid var(--gold); border-radius: 14px;
+  padding: 1.8rem 2rem; box-shadow: var(--shadow-sm);
+}
+.dresscode__icon { font-size: 2.4rem; flex-shrink: 0; }
+.dresscode__body { flex: 1 1 320px; }
+.dresscode__label {
+  text-transform: uppercase; letter-spacing: .26em; font-size: .7rem;
+  color: var(--gold-deep); margin-bottom: .3rem;
+}
+.dresscode__title { font-family: var(--serif); font-size: 1.7rem; color: var(--sage-dark); font-weight: 600; margin-bottom: .5rem; }
+.dresscode__text { color: var(--ink-soft); font-size: .98rem; line-height: 1.6; }
+.dresscode__navy { color: var(--sage-dark); font-weight: 600; }
+.dresscode__gold { color: var(--gold-deep); font-weight: 600; }
 
 /* ===================== RSVP ===================== */
 .rsvp {
@@ -562,25 +585,9 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
 .footer__date { letter-spacing: .4em; color: var(--gold); margin-bottom: 2rem; font-size: 1.1rem; }
 .footer__credit { font-size: .78rem; letter-spacing: .1em; color: rgba(255,253,249,.55); text-transform: uppercase; }
 
-/* ===================== MODAL ===================== */
-.modal { position: fixed; inset: 0; z-index: 500; display: none; align-items: center; justify-content: center; padding: 1.5rem; }
-.modal.is-open { display: flex; }
-.modal__backdrop { position: absolute; inset: 0; background: rgba(20,30,50,.6); backdrop-filter: blur(4px); }
-.modal__box {
-  position: relative; background: var(--ivory); border-radius: 18px; padding: 2.6rem 2.2rem;
-  max-width: 420px; width: 100%; text-align: center; box-shadow: var(--shadow-md);
-  animation: pop .4s var(--ease);
-}
-@keyframes pop { from { transform: scale(.9) translateY(10px); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.modal__box h3 { font-family: var(--serif); font-size: 1.8rem; color: var(--sage-dark); margin-bottom: .6rem; }
-.modal__box p { color: var(--ink-soft); margin-bottom: 1.4rem; }
-.modal__close { position: absolute; top: .8rem; right: 1.1rem; background: none; border: none; font-size: 1.8rem; color: var(--ink-soft); cursor: pointer; line-height: 1; }
-.modal__data { display: grid; grid-template-columns: auto 1fr; gap: .5rem 1rem; text-align: left; background: var(--cream); padding: 1.2rem; border-radius: 12px; margin-bottom: 1.4rem; }
-.modal__data span { color: var(--gold-deep); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; align-self: center; }
-.modal__data strong { color: var(--ink); font-size: .95rem; }
-
 /* ===================== LIGHTBOX ===================== */
-.lightbox { position: fixed; inset: 0; z-index: 600; background: rgba(28,28,24,.94); display: none; align-items: center; justify-content: center; padding: 2rem; }
+@keyframes pop { from { transform: scale(.9) translateY(10px); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.lightbox { position: fixed; inset: 0; z-index: 600; background: rgba(20,28,40,.95); display: none; align-items: center; justify-content: center; padding: 2rem; }
 .lightbox.is-open { display: flex; animation: pop .35s var(--ease); }
 .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 8px; box-shadow: var(--shadow-md); }
 .lightbox__close { position: absolute; top: 1.4rem; right: 1.8rem; background: none; border: none; color: var(--ivory); font-size: 2.6rem; cursor: pointer; line-height: 1; }
@@ -603,8 +610,9 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
   .nav__burger { display: flex; }
   .nav__links {
     position: fixed; inset: 0; flex-direction: column; justify-content: center;
-    background: var(--cream); gap: 2.2rem; transform: translateX(100%);
+    background: var(--cream); gap: 1.8rem; transform: translateX(100%);
     transition: transform .5s var(--ease);
+    overflow-y: auto; padding: 5rem 1.5rem;
   }
   .nav__links.is-open { transform: translateX(0); }
   .nav__links a { color: var(--sage-dark) !important; font-size: 1.05rem; }

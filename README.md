@@ -15,7 +15,8 @@ fácil de personalizar.
 - **O Grande Dia** — cerimónia, celebração e botão para adicionar à agenda (`.ics`)
 - **Galeria** com *lightbox* (navegação por teclado e toque)
 - **Programa** do dia
-- **Lista de presentes** com modal de IBAN e botão "copiar"
+- **Presença & Presentes** com IBAN e MB WAY e botão "copiar"
+- **Dress code** em destaque
 - **Confirmação de presença (RSVP)** com validação, campos dinâmicos e confettis 🎉
 - **FAQ** em acordeão
 - **Música ambiente** opcional
@@ -42,13 +43,17 @@ Tudo o que muda com frequência está reunido no topo do `script.js`:
 
 ```js
 const CONFIG = {
-  weddingDate: '2026-09-26T15:00:00', // data e hora do casamento
+  weddingDate: '2026-09-26T00:00:00', // contagem decrescente até à meia-noite
   eventTitle: 'Casamento de Jaqueline & Lucas',
-  eventLocation: 'Quinta da Serra, Sintra, Portugal',
+  eventLocation: 'Quinta de Marzovelos, R. Qta de Baixo n.º 2 B, 3510-014 Viseu',
   iban: 'PT50 0000 0000 0000 0000 0000 0', // IBAN para presentes
-  galleryCount: 8,
+  mbway: '+351 900 000 000',              // número MB WAY para presentes
+  galleryCount: 10,
 };
 ```
+
+> ⚠️ **Importante:** substitua o `iban` e o `mbway` pelos valores reais antes de
+> partilhar o site com os convidados.
 
 - **Cores**: edite as variáveis `--sage`, `--gold`, etc. no topo de `styles.css`.
 - **Textos**: edite diretamente o `index.html` (história, programa, FAQ…).

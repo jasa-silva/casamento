@@ -10,6 +10,7 @@
     eventTitle: 'Casamento de Jaqueline & Lucas',
     eventLocation: 'Quinta de Marzovelos, R. Qta de Baixo n.º 2 B, 3510-014 Viseu',
     iban: 'PT50 0000 0000 0000 0000 0000 0',
+    mbway: '+351 900 000 000',
     galleryCount: 10,
   };
 
@@ -75,7 +76,7 @@
   tick();
   setInterval(tick, 1000);
 
-  /* ---------- Galeria (Unsplash) ---------- */
+  /* ---------- Galeria ---------- */
   const galleryGrid = $('#galleryGrid');
   const photos = [
     'galeria-06.jpg', 'galeria-01.jpg', 'galeria-02.jpg', 'galeria-03.jpg',
@@ -224,37 +225,31 @@
     }
   }
 
-  /* ---------- Modal PIX/IBAN ---------- */
-  const pixModal = $('#pixModal');
-  $('#ibanValue').textContent = CONFIG.iban;
-  $$('[data-modal="pix"]').forEach((b) =>
-    b.addEventListener('click', () => {
-      pixModal.classList.add('is-open');
-      pixModal.setAttribute('aria-hidden', 'false');
-    })
-  );
-  $$('[data-close]', pixModal).forEach((el) =>
-    el.addEventListener('click', () => {
-      pixModal.classList.remove('is-open');
-      pixModal.setAttribute('aria-hidden', 'true');
-    })
-  );
-  $('#copyIban').addEventListener('click', async (e) => {
-    try {
-      await navigator.clipboard.writeText(CONFIG.iban);
-      e.target.textContent = 'IBAN copiado! ✓';
-      setTimeout(() => (e.target.textContent = 'Copiar IBAN'), 2200);
-    } catch (_) {
-      e.target.textContent = CONFIG.iban;
-    }
+  /* ---------- Presentes: copiar IBAN / MB WAY ---------- */
+  const ibanEl = $('#ibanValue');
+  const mbwayEl = $('#mbwayValue');
+  if (ibanEl) ibanEl.textContent = CONFIG.iban;
+  if (mbwayEl) mbwayEl.textContent = CONFIG.mbway;
+  $$('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const val = btn.dataset.copy === 'mbway' ? CONFIG.mbway : CONFIG.iban;
+      const original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(val);
+        btn.textContent = 'Copiado! ✓';
+      } catch (_) {
+        btn.textContent = val;
+      }
+      setTimeout(() => (btn.textContent = original), 2200);
+    });
   });
 
   /* ---------- Adicionar à agenda (.ics) ---------- */
   $('#calBtn').addEventListener('click', (e) => {
     e.preventDefault();
-    const start = new Date(CONFIG.weddingDate);
-    start.setHours(11, 0, 0, 0); // cerimónia/receção às 11h00
-    const end = new Date(start.getTime() + 7 * 36e5); // 11h00 → 18h00
+    // Hora de Portugal (WEST, UTC+1 em setembro): 11h00 → 18h00
+    const start = new Date('2026-09-26T11:00:00+01:00');
+    const end = new Date('2026-09-26T18:00:00+01:00');
     const fmt = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
     const ics = [
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//JL Wedding//PT',

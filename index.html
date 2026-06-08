@@ -270,29 +270,24 @@
   <!-- PRESENTES -->
   <section class="gifts" id="presentes">
     <div class="section-frame">
-      <p class="overline reveal-up">Com carinho</p>
-      <h2 class="script-title reveal-up">Lista de Presentes</h2>
-      <p class="gifts__intro reveal-up">A sua presença é o nosso maior presente. Mas, se desejar contribuir para o início da nossa nova vida a dois, deixamos aqui algumas sugestões com muito carinho.</p>
-      <div class="gifts__cards">
-        <div class="gift-card reveal-up">
-          <div class="gift-card__icon">✈️</div>
-          <h3>Lua de Mel</h3>
-          <p>Ajude-nos a tornar a nossa primeira grande viagem como marido e mulher ainda mais inesquecível.</p>
-          <button class="btn btn--ghost btn--sm" data-modal="pix">Contribuir</button>
+      <p class="overline reveal-up">Com todo o carinho</p>
+      <h2 class="script-title reveal-up">Presença &amp; Presentes</h2>
+      <p class="gifts__intro reveal-up">A sua presença é, sem dúvida, o nosso maior presente. 🤍 Mas, se o seu coração desejar abençoar e ofertar nas nossas vidas, fá-lo-á com toda a liberdade — e com a nossa mais sincera gratidão.</p>
+      <div class="gifts__methods">
+        <div class="pay-card reveal-up">
+          <div class="pay-card__icon">🏦</div>
+          <p class="pay-card__label">Transferência · IBAN</p>
+          <p class="pay-card__value" id="ibanValue">PT50 0000 0000 0000 0000 0000 0</p>
+          <button class="btn btn--solid btn--sm" data-copy="iban">Copiar IBAN</button>
         </div>
-        <div class="gift-card reveal-up">
-          <div class="gift-card__icon">🏡</div>
-          <h3>O Nosso Lar</h3>
-          <p>Contribua para construirmos o cantinho dos nossos sonhos, cheio de momentos felizes.</p>
-          <button class="btn btn--ghost btn--sm" data-modal="pix">Contribuir</button>
-        </div>
-        <div class="gift-card reveal-up">
-          <div class="gift-card__icon">🎁</div>
-          <h3>Lista de Loja</h3>
-          <p>Prefere escolher um presente? Veja a nossa lista numa loja parceira.</p>
-          <a class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener">Ver lista</a>
+        <div class="pay-card reveal-up">
+          <div class="pay-card__icon">📱</div>
+          <p class="pay-card__label">MB WAY</p>
+          <p class="pay-card__value" id="mbwayValue">+351 900 000 000</p>
+          <button class="btn btn--solid btn--sm" data-copy="mbway">Copiar número</button>
         </div>
       </div>
+      <p class="gifts__note reveal-up">Titular: Jaqueline &amp; Lucas</p>
     </div>
   </section>
 
@@ -342,8 +337,17 @@
     <div class="section-frame">
       <p class="overline reveal-up">Boa pergunta</p>
       <h2 class="script-title reveal-up">Perguntas Frequentes</h2>
+
+      <div class="dresscode reveal-up">
+        <div class="dresscode__icon">👗 🤵</div>
+        <div class="dresscode__body">
+          <p class="dresscode__label">Dress Code</p>
+          <h3 class="dresscode__title">Traje Formal · Cerimónia</h3>
+          <p class="dresscode__text">Senhoras: vestido de cocktail ou comprido. Senhores: fato. Pedimos, com carinho, que reservem o <strong>branco</strong> para a noiva. 🤍<br />Inspirem-se na nossa paleta: <span class="dresscode__navy">azul-marinho</span> &amp; <span class="dresscode__gold">dourado</span>.</p>
+        </div>
+      </div>
+
       <div class="faq__list" id="faqList">
-        <div class="faq__item reveal-up"><button class="faq__q">Qual é o traje sugerido?<span>+</span></button><div class="faq__a"><p>Traje de cerimónia. Para os senhores, fato; para as senhoras, vestido de cocktail ou comprido. Sugerimos evitar o branco, reservado à noiva. 🤍</p></div></div>
         <div class="faq__item reveal-up"><button class="faq__q">Posso levar crianças?<span>+</span></button><div class="faq__a"><p>Adoramos os mais pequenos! Indique-nos quantas crianças virão no formulário de confirmação, para prepararmos tudo com carinho.</p></div></div>
         <div class="faq__item reveal-up"><button class="faq__q">Há estacionamento no local?<span>+</span></button><div class="faq__a"><p>Sim, a Quinta de Marzovelos dispõe de estacionamento gratuito para todos os convidados.</p></div></div>
         <div class="faq__item reveal-up"><button class="faq__q">Até quando posso confirmar?<span>+</span></button><div class="faq__a"><p>Pedimos que confirme a sua presença até 15 de Agosto de 2026, para garantirmos que tudo corre na perfeição.</p></div></div>
@@ -358,21 +362,6 @@
     <p class="footer__date">26 · 09 · 2026</p>
     <p class="footer__credit">Feito com ♥ para celebrar a Jaqueline &amp; o Lucas</p>
   </footer>
-
-  <!-- Modal PIX/IBAN -->
-  <div class="modal" id="pixModal" aria-hidden="true">
-    <div class="modal__backdrop" data-close></div>
-    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="pixTitle">
-      <button class="modal__close" data-close aria-label="Fechar">&times;</button>
-      <h3 id="pixTitle">Contribuir com carinho 💝</h3>
-      <p>Pode contribuir por transferência bancária. Muito obrigado pelo seu gesto!</p>
-      <div class="modal__data">
-        <span>Titular</span><strong>Jaqueline &amp; Lucas</strong>
-        <span>IBAN</span><strong id="ibanValue">PT50 0000 0000 0000 0000 0000 0</strong>
-      </div>
-      <button class="btn btn--solid btn--sm btn--block" id="copyIban">Copiar IBAN</button>
-    </div>
-  </div>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
