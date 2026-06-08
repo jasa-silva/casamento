@@ -1,0 +1,15 @@
+# Dependências / build
+node_modules/
+dist/
+.vercel/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# Logs
+*.log

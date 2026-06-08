@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Convite de casamento de Jaqueline & Lucas. Junte-se a nós para celebrar o nosso amor." />
+  <meta name="theme-color" content="#7c8a6b" />
+  <title>Jaqueline &amp; Lucas · O Nosso Casamento</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jaqueline & Lucas · O Nosso Casamento" />
+  <meta property="og:description" content="Junte-se a nós para celebrar o nosso amor." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%8D%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <div class="loader__monogram">J<span>&amp;</span>L</div>
+      <div class="loader__bar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- Botão de música -->
+  <button class="music-toggle" id="musicToggle" aria-label="Ativar música" title="Música ambiente">
+    <span class="music-toggle__icon">
+      <span></span><span></span><span></span><span></span>
+    </span>
+  </button>
+  <audio id="bgMusic" loop preload="none">
+    <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Navegação -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav__brand">J <span>&amp;</span> L</a>
+    <button class="nav__burger" id="burger" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#historia">A Nossa História</a></li>
+      <li><a href="#evento">O Grande Dia</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#programa">Programa</a></li>
+      <li><a href="#presentes">Presentes</a></li>
+      <li><a href="#rsvp" class="nav__cta">Confirmar Presença</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__petals" id="petals" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="hero__pretitle reveal">Vamos casar</p>
+      <h1 class="hero__names">
+        <span class="reveal" style="--d:.1s">Jaqueline</span>
+        <span class="hero__amp reveal" style="--d:.3s">&amp;</span>
+        <span class="reveal" style="--d:.5s">Lucas</span>
+      </h1>
+      <div class="hero__divider reveal" style="--d:.7s"><span></span>✦<span></span></div>
+      <p class="hero__date reveal" style="--d:.9s">12 de Setembro de 2026 · Sintra, Portugal</p>
+      <a href="#rsvp" class="btn btn--ghost reveal" style="--d:1.1s">Confirme a sua presença</a>
+    </div>
+    <a href="#contagem" class="hero__scroll" aria-label="Descer">
+      <span></span>
+    </a>
+  </header>
+
+  <!-- CONTAGEM DECRESCENTE -->
+  <section class="countdown" id="contagem">
+    <div class="section-frame reveal-up">
+      <p class="overline">A contagem começou</p>
+      <h2 class="script-title">Falta pouco para o "Sim"</h2>
+      <div class="countdown__grid" id="countdown">
+        <div class="countdown__cell"><span class="countdown__num" id="cd-days">00</span><span class="countdown__label">Dias</span></div>
+        <div class="countdown__cell"><span class="countdown__num" id="cd-hours">00</span><span class="countdown__label">Horas</span></div>
+        <div class="countdown__cell"><span class="countdown__num" id="cd-min">00</span><span class="countdown__label">Minutos</span></div>
+        <div class="countdown__cell"><span class="countdown__num" id="cd-sec">00</span><span class="countdown__label">Segundos</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A NOSSA HISTÓRIA -->
+  <section class="story" id="historia">
+    <div class="section-frame">
+      <p class="overline reveal-up">Como tudo começou</p>
+      <h2 class="script-title reveal-up">A Nossa História</h2>
+      <div class="timeline">
+        <div class="timeline__item reveal-up">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2019</div>
+          <div class="timeline__card">
+            <h3>O primeiro olhar</h3>
+            <p>Conhecemo-nos numa tarde de outono, num pequeno café de Lisboa. Bastou um café e uma conversa que durou horas para sabermos que algo especial tinha começado.</p>
+          </div>
+        </div>
+        <div class="timeline__item reveal-up">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2021</div>
+          <div class="timeline__card">
+            <h3>A primeira viagem</h3>
+            <p>Entre montanhas e mar, descobrimos que viajar juntos era a nossa forma favorita de estar no mundo. Foi aí que percebemos: queríamos partilhar todas as viagens da vida.</p>
+          </div>
+        </div>
+        <div class="timeline__item reveal-up">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2024</div>
+          <div class="timeline__card">
+            <h3>O pedido</h3>
+            <p>Ao pôr do sol, com o coração a bater forte, surgiu a pergunta mais importante. E a resposta, claro, foi um "sim" cheio de lágrimas e sorrisos.</p>
+          </div>
+        </div>
+        <div class="timeline__item reveal-up">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2026</div>
+          <div class="timeline__card timeline__card--highlight">
+            <h3>Para sempre</h3>
+            <p>E agora chegou o momento de dizermos "sim" diante de quem mais amamos. Queremos muito que faça parte deste dia inesquecível.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O GRANDE DIA -->
+  <section class="event" id="evento">
+    <div class="section-frame">
+      <p class="overline reveal-up">Guarde a data</p>
+      <h2 class="script-title reveal-up">O Grande Dia</h2>
+      <div class="event__cards">
+        <article class="event-card reveal-up">
+          <div class="event-card__icon">⛪</div>
+          <h3>Cerimónia</h3>
+          <p class="event-card__time">15h00</p>
+          <p class="event-card__place">Igreja de Santa Maria</p>
+          <p class="event-card__addr">Largo da Vila, Sintra</p>
+        </article>
+        <div class="event__date reveal-up">
+          <span class="event__day">Sáb</span>
+          <span class="event__num">12</span>
+          <span class="event__month">Setembro</span>
+          <span class="event__yr">2026</span>
+        </div>
+        <article class="event-card reveal-up">
+          <div class="event-card__icon">🥂</div>
+          <h3>Celebração</h3>
+          <p class="event-card__time">17h30</p>
+          <p class="event-card__place">Quinta da Serra</p>
+          <p class="event-card__addr">Estrada da Pena, Sintra</p>
+        </article>
+      </div>
+      <div class="event__actions reveal-up">
+        <a class="btn btn--solid" id="calBtn" href="#">＋ Adicionar à agenda</a>
+        <a class="btn btn--solid" href="https://maps.google.com/?q=Sintra,+Portugal" target="_blank" rel="noopener">📍 Ver no mapa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="gallery" id="galeria">
+    <div class="section-frame">
+      <p class="overline reveal-up">Momentos</p>
+      <h2 class="script-title reveal-up">A Nossa Galeria</h2>
+    </div>
+    <div class="gallery__grid" id="galleryGrid"></div>
+  </section>
+
+  <!-- PROGRAMA -->
+  <section class="schedule" id="programa">
+    <div class="section-frame">
+      <p class="overline reveal-up">Como vai ser o dia</p>
+      <h2 class="script-title reveal-up">Programa</h2>
+      <div class="schedule__list">
+        <div class="schedule__item reveal-up"><span class="schedule__time">15:00</span><span class="schedule__dot"></span><div><h3>Cerimónia</h3><p>Recebemos os nossos convidados na igreja para o momento mais importante.</p></div></div>
+        <div class="schedule__item reveal-up"><span class="schedule__time">17:30</span><span class="schedule__dot"></span><div><h3>Cocktail de boas-vindas</h3><p>Um brinde ao amor com música suave e bons petiscos nos jardins.</p></div></div>
+        <div class="schedule__item reveal-up"><span class="schedule__time">19:30</span><span class="schedule__dot"></span><div><h3>Jantar</h3><p>Sentamo-nos à mesa para partilhar uma refeição cheia de sabor e carinho.</p></div></div>
+        <div class="schedule__item reveal-up"><span class="schedule__time">22:00</span><span class="schedule__dot"></span><div><h3>Primeira dança &amp; festa</h3><p>A pista abre e a celebração segue noite dentro. Traga os seus melhores passos!</p></div></div>
+        <div class="schedule__item reveal-up"><span class="schedule__time">00:00</span><span class="schedule__dot"></span><div><h3>Ceia &amp; despedida</h3><p>Para recompor energias antes do último brinde da noite.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESENTES -->
+  <section class="gifts" id="presentes">
+    <div class="section-frame">
+      <p class="overline reveal-up">Com carinho</p>
+      <h2 class="script-title reveal-up">Lista de Presentes</h2>
+      <p class="gifts__intro reveal-up">A sua presença é o nosso maior presente. Mas, se desejar contribuir para o início da nossa nova vida a dois, deixamos aqui algumas sugestões com muito carinho.</p>
+      <div class="gifts__cards">
+        <div class="gift-card reveal-up">
+          <div class="gift-card__icon">✈️</div>
+          <h3>Lua de Mel</h3>
+          <p>Ajude-nos a tornar a nossa primeira grande viagem como marido e mulher ainda mais inesquecível.</p>
+          <button class="btn btn--ghost btn--sm" data-modal="pix">Contribuir</button>
+        </div>
+        <div class="gift-card reveal-up">
+          <div class="gift-card__icon">🏡</div>
+          <h3>O Nosso Lar</h3>
+          <p>Contribua para construirmos o cantinho dos nossos sonhos, cheio de momentos felizes.</p>
+          <button class="btn btn--ghost btn--sm" data-modal="pix">Contribuir</button>
+        </div>
+        <div class="gift-card reveal-up">
+          <div class="gift-card__icon">🎁</div>
+          <h3>Lista de Loja</h3>
+          <p>Prefere escolher um presente? Veja a nossa lista numa loja parceira.</p>
+          <a class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener">Ver lista</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp" id="rsvp">
+    <div class="rsvp__overlay"></div>
+    <div class="section-frame">
+      <p class="overline reveal-up">Mal podemos esperar por si</p>
+      <h2 class="script-title reveal-up">Confirme a Sua Presença</h2>
+      <p class="rsvp__deadline reveal-up">Por favor, responda até <strong>15 de Agosto de 2026</strong>.</p>
+      <form class="rsvp__form reveal-up" id="rsvpForm" novalidate>
+        <div class="field">
+          <input type="text" id="name" name="name" required placeholder=" " />
+          <label for="name">Nome completo</label>
+        </div>
+        <div class="field">
+          <input type="email" id="email" name="email" placeholder=" " />
+          <label for="email">E-mail (opcional)</label>
+        </div>
+        <div class="field">
+          <p class="field__legend">Vai poder estar connosco?</p>
+          <div class="choice">
+            <label class="choice__opt"><input type="radio" name="attend" value="sim" required /><span>Sim, com muito gosto! 🎉</span></label>
+            <label class="choice__opt"><input type="radio" name="attend" value="nao" /><span>Infelizmente não posso 💔</span></label>
+          </div>
+        </div>
+        <div class="field field--guests" id="guestsField">
+          <input type="number" id="guests" name="guests" min="1" max="6" value="1" placeholder=" " />
+          <label for="guests">Número de pessoas (incluindo o próprio)</label>
+        </div>
+        <div class="field">
+          <textarea id="message" name="message" rows="3" placeholder=" "></textarea>
+          <label for="message">Deixe uma mensagem aos noivos</label>
+        </div>
+        <div class="field field--diet">
+          <input type="text" id="diet" name="diet" placeholder=" " />
+          <label for="diet">Restrições alimentares (opcional)</label>
+        </div>
+        <button type="submit" class="btn btn--solid btn--block">Enviar confirmação</button>
+        <p class="rsvp__feedback" id="rsvpFeedback" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="section-frame">
+      <p class="overline reveal-up">Boa pergunta</p>
+      <h2 class="script-title reveal-up">Perguntas Frequentes</h2>
+      <div class="faq__list" id="faqList">
+        <div class="faq__item reveal-up"><button class="faq__q">Qual é o traje sugerido?<span>+</span></button><div class="faq__a"><p>Traje de cerimónia. Para os senhores, fato; para as senhoras, vestido de cocktail ou comprido. Sugerimos evitar o branco, reservado à noiva. 🤍</p></div></div>
+        <div class="faq__item reveal-up"><button class="faq__q">Posso levar crianças?<span>+</span></button><div class="faq__a"><p>Adoramos os mais pequenos! Indique-nos quantas crianças virão no formulário de confirmação, para prepararmos tudo com carinho.</p></div></div>
+        <div class="faq__item reveal-up"><button class="faq__q">Há estacionamento no local?<span>+</span></button><div class="faq__a"><p>Sim, a Quinta da Serra dispõe de estacionamento gratuito para todos os convidados.</p></div></div>
+        <div class="faq__item reveal-up"><button class="faq__q">Até quando posso confirmar?<span>+</span></button><div class="faq__a"><p>Pedimos que confirme a sua presença até 15 de Agosto de 2026, para garantirmos que tudo corre na perfeição.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__monogram">J <span>&amp;</span> L</div>
+    <p class="footer__quote">"O amor não se vê com os olhos, mas com o coração."</p>
+    <p class="footer__date">12 · 09 · 2026</p>
+    <p class="footer__credit">Feito com ♥ para celebrar a Jaqueline &amp; o Lucas</p>
+  </footer>
+
+  <!-- Modal PIX/IBAN -->
+  <div class="modal" id="pixModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="pixTitle">
+      <button class="modal__close" data-close aria-label="Fechar">&times;</button>
+      <h3 id="pixTitle">Contribuir com carinho 💝</h3>
+      <p>Pode contribuir por transferência bancária. Muito obrigado pelo seu gesto!</p>
+      <div class="modal__data">
+        <span>Titular</span><strong>Jaqueline &amp; Lucas</strong>
+        <span>IBAN</span><strong id="ibanValue">PT50 0000 0000 0000 0000 0000 0</strong>
+      </div>
+      <button class="btn btn--solid btn--sm btn--block" id="copyIban">Copiar IBAN</button>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" aria-label="Fechar">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" aria-label="Anterior">‹</button>
+    <img src="" alt="Fotografia ampliada" id="lightboxImg" />
+    <button class="lightbox__nav lightbox__nav--next" aria-label="Seguinte">›</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
