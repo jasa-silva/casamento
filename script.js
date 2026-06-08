@@ -306,21 +306,34 @@
   music.addEventListener('play', syncMusicUI);
   music.addEventListener('pause', syncMusicUI);
 
-  // Vídeo do pedido (YouTube) — pausa a música ambiente quando começa a tocar
-  if ($('#proposalPlayer')) {
-    window.onYouTubeIframeAPIReady = function () {
+  // Vídeo do pedido (YouTube) com capa personalizada.
+  // Carrega só ao clicar e pausa a música ambiente quando começa a tocar.
+  const facade = $('#proposalFacade');
+  if (facade) {
+    const VIDEO_ID = 'dwF2Nyhmpdg';
+    function createPlayer() {
       new YT.Player('proposalPlayer', {
-        videoId: 'lfA6qLqBcMU',
-        playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
+        videoId: VIDEO_ID,
+        playerVars: { rel: 0, modestbranding: 1, playsinline: 1, autoplay: 1 },
         events: {
+          onReady: function (e) { e.target.playVideo(); },
           onStateChange: function (e) {
             if (e.data === YT.PlayerState.PLAYING && !music.paused) music.pause();
           },
         },
       });
-    };
-    const yt = document.createElement('script');
-    yt.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(yt);
+    }
+    window.onYouTubeIframeAPIReady = createPlayer;
+    facade.addEventListener('click', function () {
+      facade.classList.add('is-hidden');
+      if (!music.paused) music.pause();
+      if (window.YT && window.YT.Player) {
+        createPlayer();
+      } else {
+        const yt = document.createElement('script');
+        yt.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(yt);
+      }
+    });
   }
 })();

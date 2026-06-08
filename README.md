@@ -56,9 +56,10 @@ const CONFIG = {
   `photos` do `script.js` (galeria) pelas vossas fotografias do *pré-wedding*.
 - **Música** ("Só Você" — Anderson Freire): coloque o ficheiro `.mp3` da música
   e aponte o `<source>` do `<audio id="bgMusic">` no `index.html` para ele.
-- **Vídeo do pedido**: está alojado no YouTube. Para trocar o vídeo, altere o
-  `videoId` na secção do `#proposalPlayer` em `script.js` (o ID é a parte final
-  do link, ex.: `https://youtu.be/`**`lfA6qLqBcMU`**).
+- **Vídeo do pedido**: está alojado no YouTube com uma capa personalizada
+  (`video-capa.jpg`). Para trocar o vídeo, altere o `VIDEO_ID` em `script.js`
+  (a parte final do link, ex.: `https://youtu.be/`**`dwF2Nyhmpdg`**). Para mudar
+  a capa, substitua `video-capa.jpg`.
 - **RSVP**: por agora as respostas são guardadas no `localStorage` do navegador.
   Para receber as confirmações, ligue o formulário a um serviço como
   [Formspree](https://formspree.io), [Getform](https://getform.io) ou uma
