@@ -13,7 +13,7 @@
     mbway: '+351 900 000 000',
     // URL do Google Apps Script (Web App) que grava na planilha e envia e-mail.
     // Cole aqui o link terminado em /exec depois de fazer o deploy.
-    rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbztJ4U-eNtFOI3KAwkxVgwVSEWAyJiKFSB7x7t4M4aRzhvfQRlH9BnZ6ipbPQ4cfCzS/exec',
+    rsvpEndpoint: 'https://script.google.com/macros/s/AKfycby7-IlUgEn7OyFyXboJxNnsUFHXuL1rfTdqUH8UXnPeKTg3BINDxuOw95_cT0DixlN5/exec',
   };
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
