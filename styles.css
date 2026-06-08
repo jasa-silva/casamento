@@ -611,7 +611,7 @@ section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
   .nav__cta { border-color: var(--sage); }
   .gallery__grid { grid-template-columns: repeat(2, 1fr); }
   .gallery__item:nth-child(1), .gallery__item:nth-child(6) { grid-row: span 1; aspect-ratio: 1; }
-  .hero { background-attachment: scroll; background-position: right center; }
+  .hero { background-attachment: scroll; background-position: center center; }
   .rsvp { background-attachment: scroll; }
 }
 
